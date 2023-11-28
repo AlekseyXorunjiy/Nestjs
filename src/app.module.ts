@@ -11,13 +11,15 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CarsModelsModule } from './directories/сar-models/directories.module';
 
 @Module({
-  imports: [ 
-  //   GraphQLModule.forRoot<ApolloDriverConfig>({
-  //   driver: ApolloDriver,
-  //   autoSchemaFile: 'schema.gql',
-  // }),
-  CarsModule,CarsModelsModule,MongooseModule.forRoot('mongodb+srv://bioware73:west457@cluster0.wpsa0b1.mongodb.net/?retryWrites=true&w=majority'),
-],
+  imports: [
+    //   GraphQLModule.forRoot<ApolloDriverConfig>({
+    //   driver: ApolloDriver,
+    //   autoSchemaFile: 'schema.gql',
+    // }),
+    CarsModule,
+    CarsModelsModule,
+    MongooseModule.forRoot(process.env.DB),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
